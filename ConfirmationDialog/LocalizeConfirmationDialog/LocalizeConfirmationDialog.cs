@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 
-// Dependency : Localization(Unity Registry) 
-
 namespace KSIShareable.UI.Dialog
 {
     public class LocalizeConfirmationDialog : ConfirmationDialog
