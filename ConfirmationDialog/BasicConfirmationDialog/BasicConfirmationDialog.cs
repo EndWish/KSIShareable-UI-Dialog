@@ -7,6 +7,7 @@ namespace KSIShareable.UI.Dialog
 {
     public class BasicConfirmationDialog : ConfirmationDialog
     {
+        [Space(10)]
         [SerializeField] protected TextMeshProUGUI questionText;
         [SerializeField] protected TextMeshProUGUI yesBtnText;
         [SerializeField] protected TextMeshProUGUI noBtnText;
