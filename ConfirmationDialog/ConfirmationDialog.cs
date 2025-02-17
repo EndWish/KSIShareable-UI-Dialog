@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace KSIShareable.UI.Dialog
@@ -9,16 +10,17 @@ namespace KSIShareable.UI.Dialog
         protected Canvas canvas;
         [SerializeField] protected RectTransform dialogRectTransform;
 
-        private Action onClickYes;
-        private Action onClickNo;
+        [SerializeField] protected UnityEvent onClickYes;
+        [SerializeField] protected UnityEvent onClickNo;
+        
 
         protected void Awake() {
             canvas = GetComponent<Canvas>();
         }
 
-        protected ConfirmationDialog Init(Action onClickYes, Action onClickNo) {
-            this.onClickYes = onClickYes;
-            this.onClickNo = onClickNo;
+        protected ConfirmationDialog Init(UnityAction actionOnYes, UnityAction actionOnNo) {
+            this.onClickYes.AddListener(actionOnYes);
+            this.onClickNo.AddListener(actionOnNo);
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(dialogRectTransform);
 

@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace KSIShareable.UI.Dialog
 {
@@ -10,12 +11,12 @@ namespace KSIShareable.UI.Dialog
         [SerializeField] protected TextMeshProUGUI yesBtnText;
         [SerializeField] protected TextMeshProUGUI noBtnText;
 
-        public ConfirmationDialog Init(string questionText, string yesBtnText, string noBtnText, Action onClickYes, Action onClickNo) {
+        public ConfirmationDialog Init(string questionText, string yesBtnText, string noBtnText, UnityAction actionOnYes, UnityAction actionOnNo) {
             this.questionText.text = questionText;
             this.yesBtnText.text = yesBtnText;
             this.noBtnText.text = noBtnText;
 
-            base.Init(onClickYes, onClickNo);
+            base.Init(actionOnYes, actionOnNo);
 
             return this;
         }
