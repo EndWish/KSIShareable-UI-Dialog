@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 
@@ -12,7 +13,7 @@ namespace KSIShareable.UI.Dialog
         [SerializeField] protected LocalizeStringEvent yesBtnText;
         [SerializeField] protected LocalizeStringEvent noBtnText;
 
-        public ConfirmationDialog Init(LocalizedString questionText, LocalizedString yesBtnText, LocalizedString noBtnText, Action onClickYes, Action onClickNo) {
+        public ConfirmationDialog Init(LocalizedString questionText, LocalizedString yesBtnText, LocalizedString noBtnText, UnityAction actionOnYes, UnityAction actionOnNo) {
             this.questionText.StringReference.SetReference(questionText.TableReference, questionText.TableEntryReference);
             this.questionText.StringReference.Clear();
             this.questionText.StringReference.AddRange(questionText);
@@ -25,7 +26,7 @@ namespace KSIShareable.UI.Dialog
             this.noBtnText.StringReference.Clear();
             this.noBtnText.StringReference.AddRange(noBtnText);
 
-            base.Init(onClickYes, onClickNo);
+            base.Init(actionOnYes, actionOnNo);
 
             return this;
         }

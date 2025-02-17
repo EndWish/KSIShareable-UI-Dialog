@@ -410,7 +410,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2553742054425176013}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4601781219480341360}
+        m_TargetAssemblyTypeName: KSIShareable.UI.Dialog.ConfirmationDialog, KSIShareable.UI.Dialog
+        m_MethodName: ActOnClickNo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4731342824587905972
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,13 +544,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8427156575150727152}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 4601781219480341360}
+        m_TargetAssemblyTypeName: KSIShareable.UI.Dialog.ConfirmationDialog, KSIShareable.UI.Dialog
+        m_MethodName: ActOnClickYes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -849,8 +861,8 @@ RectTransform:
   - {fileID: 1522990882936029376}
   m_Father: {fileID: 3839536984805462998}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 325.55026, y: 0}
   m_SizeDelta: {x: 651.1005, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -947,7 +959,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogRectTransform: {fileID: 3839536984805462998}
-  questionText: {fileID: 0}
+  onClickYes:
+    m_PersistentCalls:
+      m_Calls: []
+  onClickNo:
+    m_PersistentCalls:
+      m_Calls: []
+  questionText: {fileID: 5698532956925940010}
   yesBtnText: {fileID: 4522293993610245653}
   noBtnText: {fileID: 4496956960514180776}
 --- !u!223 &7151924240742966771
