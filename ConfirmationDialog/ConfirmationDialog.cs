@@ -5,13 +5,22 @@ using UnityEngine.UI;
 
 namespace KSIShareable.UI.Dialog
 {
+    public enum CloseAction
+    {
+        Nothing,
+        Disable,
+        Destroy,
+    }
+
     public abstract class ConfirmationDialog : MonoBehaviour
     {
         protected Canvas canvas;
         [SerializeField] protected RectTransform dialogRectTransform;
 
-        [SerializeField] protected UnityEvent onClickYes;
-        [SerializeField] protected UnityEvent onClickNo;
+        [Space(10)]
+        public CloseAction CloseAction = CloseAction.Destroy;
+        public UnityEvent OnClickYes;
+        public UnityEvent OnClickNo;
         
 
         protected void Awake() {
@@ -19,8 +28,10 @@ namespace KSIShareable.UI.Dialog
         }
 
         protected ConfirmationDialog Init(UnityAction actionOnYes, UnityAction actionOnNo) {
-            this.onClickYes.AddListener(actionOnYes);
-            this.onClickNo.AddListener(actionOnNo);
+            if(actionOnYes != null)
+                this.OnClickYes.AddListener(actionOnYes);
+            if (actionOnNo != null)
+                this.OnClickNo.AddListener(actionOnNo);
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(dialogRectTransform);
 
@@ -37,12 +48,24 @@ namespace KSIShareable.UI.Dialog
         }
 
         public void ActOnClickYes() {
-            onClickYes?.Invoke();
-            Destroy(gameObject);
+            OnClickYes?.Invoke();
+            ExecuteCloseAction();
         }
         public void ActOnClickNo() {
-            onClickNo?.Invoke();
-            Destroy(gameObject);
+            OnClickNo?.Invoke();
+            ExecuteCloseAction();
+        }
+        protected void ExecuteCloseAction() {
+            switch (CloseAction) {
+                case CloseAction.Nothing:
+                    break;
+                case CloseAction.Disable:
+                    gameObject.SetActive(false);
+                    break;
+                case CloseAction.Destroy:
+                    Destroy(this.gameObject);
+                    break;
+            }
         }
 
 
